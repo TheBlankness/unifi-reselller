@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "unifi-reseller",
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}
