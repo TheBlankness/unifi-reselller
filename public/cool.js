@@ -11,8 +11,18 @@ const package = document.querySelector("#package");
 const messages = document.querySelector("#messages");
 const saveButton = document.querySelector("#saveButton");
 
+function loading() {
+  var x = document.getElementById("loading");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
 saveButton.addEventListener("click", function() {
-  console.log(name.value);
+  loading();
+  saveButton.disabled = true;
   if (
     name.value === "" ||
     icNumber.value === "" ||
@@ -26,6 +36,8 @@ saveButton.addEventListener("click", function() {
     package.value === ""
   ) {
     messages.textContent = "Please fill in the form";
+    saveButton.disabled = false;
+    loading();
     return;
   }
 
@@ -52,9 +64,24 @@ saveButton.addEventListener("click", function() {
     }
   )
     .then(function(res) {
-      console.log(res);
+      loading();
+      saveButton.disabled = false;
+      alert("form submited");
+      name.value = "";
+      icNumber.value = "";
+      email.value = "";
+      phone.value = "";
+      address1.value = "";
+      address2.value = "";
+      city.value = "";
+      state.value = "";
+      city.value = "";
+      package.value = "";
     })
     .catch(function(err) {
+      loading();
+      saveButton.disabled = false;
+      alert("Something went wrong");
       console.log(err);
     });
 });
