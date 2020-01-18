@@ -82,7 +82,6 @@ header.masthead h1 {
 }
 
 #why{
-  background:#ffa500;
   color: #000000;
 }
  
@@ -173,4 +172,25 @@ footer i{
 
 #black{
   color: #000000;
+}
+
+.intro p{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.intro{
+  margin-top: 5px 0;
+  background:#ffa500;
+}
+#steps{
+  background:#ffa500;
+}
+
+.atas{
+  background:#ffa500;
+}
+
+.responsive {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
 }
