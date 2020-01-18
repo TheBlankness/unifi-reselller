@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "unifi-reseller",
+    "site": "ycom-sales",
     "public": "public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   }
