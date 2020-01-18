@@ -10,6 +10,15 @@ const zip = document.querySelector("#zip");
 const package = document.querySelector("#package");
 const messages = document.querySelector("#messages");
 const saveButton = document.querySelector("#saveButton");
+let agent = "YCOM";
+window.onload = function() {
+  console.log(window.location.href);
+  var searchParams = new URLSearchParams(window.location.href.split("?")[1]);
+  if (searchParams.get("agent")) {
+    agent = searchParams.get("agent");
+  }
+  console.log(agent);
+};
 
 function loading() {
   var x = document.getElementById("loading");
@@ -42,7 +51,7 @@ saveButton.addEventListener("click", function() {
   }
 
   fetch(
-    "https://asia-east2-unifi-customer-handler.cloudfunctions.net/api/register/public/customer",
+    "https://asia-east2-ycom-unifi-system.cloudfunctions.net/api/register/public/customer",
     {
       method: "post",
       headers: {
@@ -59,14 +68,15 @@ saveButton.addEventListener("click", function() {
         city: `${city.value}`,
         state: `${state.value}`,
         zip: `${zip.value}`,
-        package: `${package.value}`
+        package: `${package.value}`,
+        agent: `${agent}`
       })
     }
   )
     .then(function(res) {
       loading();
       saveButton.disabled = false;
-      alert("form submited");
+      window.location.href = "received.html";
       name.value = "";
       icNumber.value = "";
       email.value = "";
@@ -142,12 +152,4 @@ function ScrolllToSubscribe() {
       1500
     );
   }
-}
-
-function hantar() {
-  alert("lol");
-  var people = document.getElementById("people").value;
-  var nationality = document.getElementById("nationality").value;
-
-  alert(people + " " + nationality);
 }
